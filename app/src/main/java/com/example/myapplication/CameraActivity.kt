@@ -1,13 +1,9 @@
 package com.example.myapplication
 
 import android.Manifest
-import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.Matrix
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
@@ -133,16 +129,12 @@ fun CameraScreen() {
             // Botón para tomar foto
             Button(
                 onClick = {
-                    when {
-                        cameraPermissionState.status.isGranted -> {
-                            // Permiso concedido, tomar foto
-                            imageUri = createImageFile()
-                            takePictureLauncher.launch(imageUri)
-                        }
-                        else -> {
-                            // Solicitar permiso
-                            cameraPermissionState.launchPermissionRequest()
-                        }
+                    if (cameraPermissionState.status.isGranted) {
+                        val uri = createImageFile() // Variable local para evitar problemas de smart cast
+                        imageUri = uri
+                        takePictureLauncher.launch(uri)
+                    } else {
+                        cameraPermissionState.launchPermissionRequest()
                     }
                 },
                 modifier = Modifier.fillMaxWidth()
