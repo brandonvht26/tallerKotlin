@@ -10,16 +10,15 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" android:required="false" />
 
-    <!-- PERMISO DE ALMACENAMIENTO (Compatibilidad) -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
+    <!-- PERMISO DE VIBRACIÓN (REQUERIDO POR EL RETO) -->
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Registro de Accidentes"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
@@ -38,27 +37,14 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.MyApplication">
+            android:label="Registro Accidentes"
+            android:theme="@style/Theme.MyApplication"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!-- REGISTRO DE CAMERAACTIVITY -->
-        <activity
-            android:name=".CameraActivity"
-            android:exported="false"
-            android:label="Cámara"
-            android:theme="@style/Theme.MyApplication" />
-
-        <!-- REGISTRO DE LOCATIONACTIVITY -->
-        <activity
-            android:name=".LocationActivity"
-            android:exported="false"
-            android:label="Ubicación"
-            android:theme="@style/Theme.MyApplication" />
 
     </application>
 
